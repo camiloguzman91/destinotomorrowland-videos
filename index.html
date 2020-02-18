@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Galería - Destino Tomorrowland</title>
+    <link rel="icon" type="image/png" href=".\Imágenes\tom_logo.png">
+    <style>
+        body{
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0 200px;
+            background: #B5959F;
+        }
+        header {
+            background: #B5959F;
+            color: black;
+            display: flex;
+            height: 80px;
+            align-items: center;
+            justify-content:space-between;
+            margin: 0;
+        }
+        ol,
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .header a{
+            color: #8E0038;
+            text-decoration: none; /*quitar el subrayado del enlace*/
+            font-size: 25px;
+            padding: 0 40px;
+        }
+        .header ol{
+            display: flex;
+        }
+        figure{
+            margin: 0;
+        }
+        
+        .flexbox{
+            display: flex;
+            /*flex-wrap: nowrap;*/ /*ningún elemento caiga*/
+            flex-wrap: wrap;  /*los elementos caen para caber a lo ancho de la página*/
+            /*flex-direction: column;*/
+        }
+        .container{
+            /*border: 1px solid red;*/
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            display: inherit;
+            justify-content: inherit;
+            align-items: inherit;
+            height: auto;
+            flex-wrap: inherit;
+        }
+        .main_container{
+            /*border: 1px solid red;*/
+            max-width: 1700px;
+            /*width: 100%;*/
+            flex: 1;
+            /*width: 1700px;*/
+            margin: 0 auto;
+            display: inherit;
+            justify-content: inherit;
+            align-items: inherit;
+            height: inherit;
+            flex-wrap: inherit;
+            background-color: transparent;
+        }
+        .container-final{
+            /*border: 1px solid red;*/
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            display: inherit;
+            justify-content: inherit;
+            align-items: inherit;
+            height: auto;
+            flex-wrap: inherit;
+        }
+        .post-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(350px, 196.8px));
+            justify-content: center;
+            grid-gap: 28px;
+        }
+        .html-video {
+            width: 350px;
+            height: 196.8px;
+        }
+        .post {
+            cursor: pointer;   /*hace que salga la mano y no la flecha en el cursor*/
+            position: relative;
+            display: block;
+        }
+        .post-image{
+            margin: 0;
+        }
+        .post-image img {
+            width: 100%;
+            vertical-align: top;      /*margen*/
+        }
+        .footer{
+            color: white;
+            background-color: #8E0038;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer img{
+            vertical-align: middle;
+        }
+
+        .footer a{
+            color: white;
+        }
+        .footer p {
+            padding: 0 20px;
+        }
+        .contact{
+            background-color: #8E0038;
+            color: white;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 15px;
+            margin-top: 28px;
+        }
+        .burguer-button{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.1);
+            display: none;
+            line-height: 40px;
+            text-align: center;
+            position: fixed;
+            z-index:4;
+            left: 5px;
+            top: 5px;
+            color: transparent;
+            background-image: url(./Iconos/menu_g.png);
+            background-repeat: no-repeat;
+        }
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 10px 10px;
+            background-size: 50px 50px;
+        }
+        .social-link.twitter {
+            background-image: url(./Iconos/twitter_g.png);
+        }
+        .social-link.facebook{
+            background-image: url(./Iconos/facebook_g.png);
+        }
+        .social-link.instagram{
+            background-image: url(./Iconos/instagram_g.png);
+        }
+        .social-link.youtube{
+            background-image: url(./Iconos/youtube_g.png);
+        }
+        
+        
+        @media screen and (max-width: 1400px) {
+            .header a {
+                font-size: 1.2em;
+            }
+            .post-list {
+                grid-gap: 3px;
+            }
+            body {
+                margin: 0 60px;
+            }
+        }
+        @media screen and (max-width: 1290px){
+            .header a {
+                padding: 0 12px;
+            }
+        }
+        @media screen and (max-width: 1124px) {
+            .header a {
+                padding: 0 12px;
+                flex-wrap: wrap;
+            }
+            .post-list {
+                grid-gap: 3px;
+                grid-template-columns: repeat(2, minmax(350px, 196.8px));
+            }
+            .main_container {
+                justify-content: center;
+            }
+            .container{
+                padding: 10px 1em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .burguer-button{
+                display: block;
+                cursor: pointer;
+            }
+            
+            .header .logo {
+                text-align: center;
+            }
+            .header{
+                display: block;
+                height: auto;
+            }
+            .header ol{
+                display: block;
+            }
+            .header ol li{
+                height: 50px;
+            }
+            .header a{
+                display: block;
+                justify-content: center;
+                height: 40px;
+                font-size: 2em;
+                text-decoration: underline;
+                margin-bottom: .5em;
+            }
+            .header .logo {
+                text-align: center;
+            }
+            .menu{
+                position: fixed;
+                background: rgb(255, 255, 255, 0.8);
+                z-index: 3;
+                top: 0;
+                left: -100vw;
+                width: 100vw;
+                height: 50vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.6s;
+            }
+            .menu.is-active{
+                left: 0;
+            }
+            .post-list {
+                grid-template-columns: repeat(1, minmax(350px, 196.8px));
+            }
+        @media screen and (max-width: 513px){
+            .contact {
+                height: 230px;
+                display: flow-root;
+            }
+            .social {
+                text-align: center;
+            }
+        @media screen and (max-width: 480px){
+            body {
+                margin: 0 20px;
+            }
+            .contact{
+                height: auto;
+                padding: 1.5em 0;
+                text-align: center;
+                display: block;
+            }
+            
+            footer{
+                display: block;
+                text-align: center;
+                border: 1px solid transparent;
+            }
+            .container{
+                display: block;
+                text-align: center;
+                font-weight: bold;
+            }
+            .contact p {
+                margin-left: 0px;
+                display: flow-root;
+            }
+            .footer p {
+                margin-left: 0px;
+            }
+            .event-list-title-1 {
+                padding-left: 0px;
+            }
+        }
+        @media screen and (max-width: 380px){
+            p {
+                font-size: 0.85em;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+    <i class="icon-menu burguer-button" id="burguer-menu"></i>
+        <div class="main_container">
+            <figure class="logo">
+                <img src="Imágenes\tom_logo.png" height="50" alt="Tomorrowland"/>
+            </figure>
+            <nav class="menu">
+                <ol>
+                     <li>
+                        <a class="link" href="https://camiloguzman91.github.io/destinotomorrowland/">Inicio</a>
+                    </li>
+                    <li>
+                        <a class="link" href="https://camiloguzman91.github.io/destinotomorrowland-guía/">Guía</a>
+                    </li>
+                    <li>
+                        <a class="link" href="https://camiloguzman91.github.io/destinotomorrowland-galeria/">Galería fotográfica</a>
+                    </li>
+                    <li>
+                        <a class="link" href="#Videos/">Videos</a>
+                    </li>
+                    <li>
+                        <a class="link" href="#Contacto">Contacto</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+    <section class="post-list">
+        <a href="" class="post">
+            <figure class="post-image">
+                <video class="html-video" src="Imágenes/a_1.mp4" width="350" height="293" controls></video>
+            </figure>
+        </a>
+        <a href="" class="post">
+            <figure class="post-image">
+                <video class="html-video" src="Imágenes/b_1.mp4" width="350" height="293" controls></video>
+            </figure>
+        </a>
+        <a href="" class="post">
+            <figure class="post-image">
+                <video class="html-video" src="Imágenes/c_1.mp4" width="350" height="293" controls></video>
+            </figure>
+        </a>
+        <!--<a href="" class="post">
+            <figure class="post-image">
+                <img src="./Imágenes/d.jpg" alt="">
+            </figure>
+        </a>-->
+    </section>
+    <section id="Contacto" class="contact">
+        <div class="container-final">
+            <form action="/Contacto/" class="form-email">
+                    <h3 class="event-list-title-1">Contacto</h3>
+                    <p><small><strong>Correo electrónico: </strong>camiloge_91@hotmail.com</small></small></p>
+                    <p><small><strong>Número celular: </strong>-----</small></small></p>
+                </form>
+            <div class="social">
+                    <a href="https://twitter.com/camiloguzman_91" class="social-link twitter" target="_blank"></a>
+                    <a href="https://www.facebook.com/Camilo.Guzman91" class="social-link facebook" target="_blank"></a>
+                    <a href="https://www.instagram.com/camiloguzman_91/" class="social-link instagram" target="_blank"></a>
+                    <a href="https://www.youtube.com/channel/UCVsWK0bZ2ya6eAK7LjBtDQg?view_as=subscriber" class="social-link youtube" target="_blank"></a>
+                </div>
+         </div>
+    </section> 
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <p>
+                    Destino Tomorrowland. 2020 <img src="Imágenes\tom_logo_n.png" width="25" alt="Logo">
+                </p>
+                </div>
+                <div>
+                <p>
+                    Designed by <a href="https://twitter.com/camiloguzman_91" target="_blank">@camiloguzman_91</a>
+                </p>
+            </div>            
+        </div>
+    </footer>
+    <script>
+    /*console.log('amazing');*/
+    const ipad = window.matchMedia('screen and (max-width: 767px)');
+    const menu = document.querySelector('.menu')
+    /*console.log(menu);*/
+    const burguerButton = document.querySelector('#burguer-menu');
+    /*console.log(burguerButton);*/
+    ipad.addListener(validation)
+    function validation(event){
+        if(event.matches) {
+        burguerButton.addEventListener('click',hideShow)
+        } else {
+        burguerButton.removeEventListener('click',hideShow)
+        }
+    }
+    validation (ipad);
+    function hideShow(){
+        if(menu.classList.contains('is-active')){
+            menu.classList.remove('is-active');
+        } else{
+        menu.classList.add('is-active');
+        }
+    }
+</script>
+</body>
+</html>
